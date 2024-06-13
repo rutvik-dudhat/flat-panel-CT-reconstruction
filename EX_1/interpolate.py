@@ -1,6 +1,9 @@
 
 import math
 import numpy as np
+#import interpolate as ip
+
+
 
 def interpolate(grid, x, y):
     # Calculate the four surrounding data points in range [0,1]

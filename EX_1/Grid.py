@@ -1,6 +1,7 @@
 import numpy as np
 import interpolate as ip
-
+from interpolate import interpolate as ip
+#from scipy.interpolate import interpolate
 # import your necessary libraries by yourself
 
 # Fill in the missing part of the following functions, class attributes
@@ -23,13 +24,13 @@ class Grid:
         # set buffer value at the index (i,j)
 
     def get_at_index(self, i, j):
-        return self.buffer[i,j]
+        return self.buffer[i, j]
         # get buffer value at the index (i,j)
 
     def get_at_physical(self, x, y):
         i,j=self.physical_to_index(x,y)
-        return ip.interpolate(self,i,j)
-        # convert physical to to index coordinates and then interpolate
+        return ip(self,i,j)
+        # convert physical to index coordinates and then interpolate
 
 
     def index_to_physical(self, i, j):

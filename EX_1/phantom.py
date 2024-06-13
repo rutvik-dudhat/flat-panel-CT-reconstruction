@@ -15,6 +15,7 @@
 ## <http://www.gnu.org/licenses/>.
 
 import numpy as np
+from scipy import interpolate
 
 def phantom (n = 256, p_type = 'Modified Shepp-Logan', ellipses = None):
 	"""
