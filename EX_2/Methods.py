@@ -7,9 +7,10 @@ from EX_1.Grid import Grid
 from EX_1.interpolate import interpolate as ip
 import matplotlib.pyplot as plt
 from scipy.ndimage import convolve
-
 from EX_3.Ex3Run import angular_increment
 from Ex2Run import detector_spacing
+
+
 def create_sinogram(phantom, num_projections, detector_spacing, detector_size, scan_range):
     angle_step = scan_range / num_projections
     sinogram = Grid(num_projections, detector_size, (angle_step, detector_spacing))

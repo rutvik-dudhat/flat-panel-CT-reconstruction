@@ -4,6 +4,9 @@ from EX_1.phantom import phantom
 import time
 import matplotlib.pyplot as plt
 import Mode as Methods
+import numpy as np
+from scipy.ndimage import gaussian_filter
+
 
 
 
@@ -28,7 +31,7 @@ d_sd = 1200
 # create fanogram
 t0 = time.time()
 fanogram_shortScan = \
-Methods.create_fanogram(sheppGrid, number_of_projections, detector_spacing, detector_size, angular_increment, d_si, d_sd)
+    Methods.create_fanogram(sheppGrid, number_of_projections, detector_spacing, detector_size, angular_increment, d_si, d_sd)
 t1 = time.time()
 print('fanogram:', t1-t0)
 
@@ -56,7 +59,7 @@ d_sd = 1200
 # create fanogram
 t0 = time.time()
 fanogram_fullScan = \
-Methods.create_fanogram(sheppGrid, number_of_projections, detector_spacing, detector_size, angular_increment, d_si, d_sd)
+    Methods.create_fanogram(sheppGrid, number_of_projections, detector_spacing, detector_size, angular_increment, d_si, d_sd)
 t1 = time.time()
 print('fanogram:', t1-t0)
 
@@ -73,9 +76,10 @@ print('ramp filter:', t1-t0)
 
 # create filtered reco
 t0 = time.time()
-reco_filtered = Methods.backproject_fanbeam(fanogram_filtered, grid_size[0], grid_size[1], grid_spacing[0], d_si, d_sd)
+reco_filtered = Methods.backproject_fanbeam(fanogram_filtered, grid_size[0], grid_size[1], grid_spacing, d_si, d_sd)
 t1 = time.time()
 print('backprojection:', t1-t0)
 plt.imshow(reco_filtered.buffer)
 plt.gray()
 plt.show()
+
